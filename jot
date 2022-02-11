@@ -1,0 +1,57 @@
+installing django
+    pip install django
+
+creating a django project
+    django-admin startproject project_name
+
+run server
+    python manage.py runserver
+
+creating apps
+    python manage.py startapp app_name
+
+write first view
+ Open the file polls/views.py and put the following Python code in it:
+    from django.http import HttpResponse
+
+
+def index(request):
+    return HttpResponse("Hello, world. You're at the polls index.")
+
+To create a URLconf in the polls directory, create a file called urls.py.
+In the polls/urls.py file include the following code:
+    from django.urls import path
+
+    from . import views
+
+    urlpatterns = [
+        path('', views.index, name='index'),
+    ]
+
+In mysite/urls.py, In mysite/urls.py, add an import for django.urls.include
+ and insert an include() in the urlpatterns list, so you have:
+
+    from django.contrib import admin
+    from django.urls import include, path
+
+    urlpatterns = [
+    path('polls/', include('polls.urls')),
+    path('admin/', admin.site.urls),
+    ]
+
+re-run server - python manage.py runserver
+
+database setup
+creating models
+    polls/models.py
+
+include polls app in mysite/settings.py
+    'polls.apps.PollsConfig',
+
+the django admin-creating admin user
+    python manage.py createsuperuser
+
+adding background image
+
+https://www.youtube.com/watch?v=RPArC1uj5D4
+django poll app
